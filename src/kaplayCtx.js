@@ -1,8 +1,8 @@
 import kaplay from "kaplay";
 
 const k = kaplay({
-    width: 1920,
-    height: 1920,
+    width: 3640,
+    height: 1520,
     letterbox: true,
     background: [0, 0, 0],
     global: false,
@@ -13,8 +13,11 @@ const k = kaplay({
             mouse: "left",
         },
     },
-    debugKey: "d",
     debug: true,
+    debugKey: "k",
 });
+
+
+
 
 export default k;
