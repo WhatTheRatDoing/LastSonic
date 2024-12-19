@@ -1,6 +1,6 @@
 import k from "../kaplayCtx";
 
-const SPEED = 5000;
+const SPEED = 2500;
 const JUMP_FORCE = 2000;
 const MAX_SPEED = 5000;
 
@@ -29,7 +29,7 @@ player.onGround(() => {
     if (player.isGrounded()){
       player.jump(JUMP_FORCE),
       player.play("jump")
-      k.play("jump", {volume: 0.5});
+      // k.play("jump", {volume: 0.5});
     }
   });
   
@@ -98,6 +98,13 @@ player.onPhysicsResolve(() => {
 
     k.onFixedUpdate(() => {
       console.log(`Vitesse actuelle : ${player.speed}`);
+  });
+
+  player.isPropelled = false;
+  k.onUpdate(() => {
+    if (!player.isGrounded()) {
+      player.isPropelled = false;
+    }
   });
 
 

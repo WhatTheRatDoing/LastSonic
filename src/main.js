@@ -2,7 +2,9 @@ import { makeplayer } from "./entities/player";
 import k from "./kaplayCtx";
 import mainMenu from "./scenes/mainMenu";
 
+// dialogues mis en plus, si vous souhaitez les activer, de commentez "introdialog" et commentez "k.go("mainGame");" en fin de code
 
+/*
 k.scene("introDialog", () => {
   
   k.loadSprite("sonic", "graphics/sonictalking.gif");
@@ -24,7 +26,8 @@ k.scene("introDialog", () => {
 };
 
 
-const dialogs = [
+const dialogs = 
+[
   ["sonic", "[default]Oh salut[/default]"],
   ["tails", "[default]Hey! c'est Sonic[/default]"],
   ["sonic", "[default]Comment tu vas ?[/default]"],
@@ -73,7 +76,7 @@ function showDialog() {
       k.play(characters[character].sound);
   }
 
-  k.wait(0.5, () => {
+  k.wait(3, () => {
       isTalking = false;
   });
 }
@@ -91,6 +94,11 @@ function showDialog() {
     }
 });
 });
+
+k.go("introDialog");
+
+*/
+
 
 k.scene("mainGame", () => {
 
@@ -164,7 +172,7 @@ k.loadSound("jump","sounds/Jump.wav");
 k.loadSound("ring","sounds/Ring.wav");
 k.loadSound("city","sounds/city.wav");
 k.loadSound("speed","sounds/sonic-spindash.mp3");
-
+k.loadSound("exe","sounds/sonic-exe-laugh.mp3");
 makeplayer();
 
   k.setGravity(2500)
@@ -1158,9 +1166,518 @@ k.add([
   { z: 1 }
 ]);
 
+k.add([
+  k.sprite("platforms14"),
+  k.pos(24000,k.height() - 1090),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(180, 142),     
+      k.vec2(255, 142),   
+      k.vec2(255, 250),   
+      k.vec2(-20, 230),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms14"),
+  k.pos(24000,k.height() - 1090),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 205),     
+      k.vec2(50, 195),   
+      k.vec2(50, 250),   
+      k.vec2(0, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms14"),
+  k.pos(24000,k.height() - 1090),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(195, 3),     
+      k.vec2(255, 3),   
+      k.vec2(255, 80),   
+      k.vec2(195, 80),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms2"),
+  k.pos(25500, k.height() - 1065),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 135),     
+      k.vec2(60, 145),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms2"),
+  k.pos(25500, k.height() - 1065),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(60, 145),     
+      k.vec2(250, 135),   
+      k.vec2(60, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms11"),
+  k.pos(24000,k.height() - 2500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(200, 200),     
+      k.vec2(250, 200),   
+      k.vec2(250, 250),   
+      k.vec2(200, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(27000, k.height() - 1450),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "SPEEDPlatform"
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(28500, k.height() - 1450),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(30000, k.height() - 1450),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "SPEEDPlatform"
+]);
+
+k.add([
+  k.sprite("platforms21"),
+  k.pos(31500,k.height() - 1450),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 195),     
+      k.vec2(0, 255),   
+      k.vec2(130, 255),   
+      k.vec2(130, 195),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+])
+
+k.add([
+  k.sprite("platforms21"),
+  k.pos(31500,k.height() - 1450),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(70, 195),     
+      k.vec2(70, 255),   
+      k.vec2(120, 255),   
+      k.vec2(125, 135),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "rampPlatform"
+]);
 
 
 
+k.add([
+  k.sprite("platforms21"),
+  k.pos(31500, k.height() - 1450),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(125, 135),     
+      k.vec2(125, 255),   
+      k.vec2(255, 255),   
+      k.vec2(255, 135),
+    ])
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+]);
+
+//code de propulsion vers le haut :3
+
+k.onCollide("rampPlatform", "player", (_, player) => {
+  if (player.isGrounded() && player.speed > 0) {
+    const horizontalBoost = player.speed * 1.2; 
+    const verticalBoost = Math.min(player.speed * 1.4, 2000); 
+
+    player.jump(verticalBoost); 
+    player.move(player.flipX ? -horizontalBoost : horizontalBoost, 0); 
+    player.play("jump"); 
+    k.play("jump", { volume: 0.5 });
+  }
+});
+
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(38000, k.height() - 0),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(39500, k.height() - 0),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+
+
+
+
+
+k.add([
+  k.sprite("platforms17"),
+  k.pos(40000,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(115, 95),     
+      k.vec2(115, 250),   
+      k.vec2(255, 250),   
+      k.vec2(255, 140),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms17"),
+  k.pos(40000,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(35, 110),     
+      k.vec2(35, 125),   
+      k.vec2(115, 125),   
+      k.vec2(115, 95),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms17"),
+  k.pos(40000,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 205),     
+      k.vec2(0, 255),   
+      k.vec2(115, 255),   
+      k.vec2(115, 240),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms22"),
+  k.pos(41500,k.height() -1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 135),     
+      k.vec2(0, 255),   
+      k.vec2(130, 255),   
+      k.vec2(130, 165),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms22"),
+  k.pos(41500,k.height() -1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(130, 255),     
+      k.vec2(130, 165),   
+      k.vec2(255, 210),   
+      k.vec2(255, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(43000, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(44500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "laugh"
+]);
+
+
+
+k.onCollide("laugh", "player", (_, player) => {
+  if (player.speed && !player.isBoosted) {
+      player.isBoosted = true; 
+      const originalSpeed = player.speed;
+
+
+      player.speed = Math.min(player.speed * 0.5, player.maxSpeed);
+      k.play("exe", { volume: 0.5 });
+
+      k.wait(4, () => {
+          player.speed = originalSpeed;
+          player.isBoosted = false;
+      });
+  }
+});
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(46000, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+
+
+k.add([
+  k.sprite("platforms19"),
+  k.pos(47500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(130, 100),      
+      k.vec2(200, 100),    
+      k.vec2(200, 255),      
+      k.vec2(130, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms19"),
+  k.pos(47500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 130),      
+      k.vec2(125, 130),    
+      k.vec2(125, 255),      
+      k.vec2(5, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms19"),
+  k.pos(47500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(195, 70),      
+      k.vec2(255, 70),    
+      k.vec2(255, 255),      
+      k.vec2(195, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms20"),
+  k.pos(49000, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(68, 20),      
+      k.vec2(255, 20),    
+      k.vec2(255, 255),      
+      k.vec2(68, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "laugh"
+]);
+
+k.add([
+  k.sprite("platforms20"),
+  k.pos(49000, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(4, 70),      
+      k.vec2(63, 70),    
+      k.vec2(63, 255),      
+      k.vec2(4, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "laugh"
+]);
+
+
+
+
+
+
+
+// code bien lourd au niveau du jeu, a ammeliorer
+
+/*
 // Ajout d'un timer
 let elapsedTime = 0; // Temps écoulé en secondes
 const timerText = k.add([
@@ -1221,7 +1738,11 @@ k.scene("gameover", ({ time, score }) => {
 */
 });
 
-k.go("introDialog");
+
+
+
+
+k.go("mainGame");
 
 
 
