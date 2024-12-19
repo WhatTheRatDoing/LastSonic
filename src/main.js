@@ -702,6 +702,61 @@ k.add([
   { z: 1 }
 ]);*/
 
+//platform21
+
+/*k.add([
+  k.sprite("platforms21"),
+  k.pos(600,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 195),     
+      k.vec2(0, 255),   
+      k.vec2(130, 255),   
+      k.vec2(130, 195),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+])
+
+k.add([
+  k.sprite("platforms21"),
+  k.pos(600,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(70, 195),     
+      k.vec2(70, 255),   
+      k.vec2(120, 255),   
+      k.vec2(125, 135),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+
+
+k.add([
+  k.sprite("platforms21"),
+  k.pos(600,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(125, 135),     
+      k.vec2(125, 255),   
+      k.vec2(255, 255),   
+      k.vec2(255, 135),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);*/
+
 //plateforms22
 /*
 k.add([

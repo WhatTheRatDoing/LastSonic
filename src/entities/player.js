@@ -18,7 +18,7 @@ export function makeplayer(){
 
 player.onGround(() => {
     if (!k.isKeyDown("left") && !k.isKeyDown("right")) {
-        player.play("crouch");
+        player.play("idle2");
     }
     else {
         player.play("jump");
