@@ -388,18 +388,18 @@ k.add([
 
 
 
+//platform14
 
-
-
+/*
 k.add([
   k.sprite("platforms14"),
   k.pos(500,k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(5, 148),     
-      k.vec2(60, 148),   
-      k.vec2(60, 250),   
-      k.vec2(5, 250),
+      k.vec2(180, 142),     
+      k.vec2(255, 142),   
+      k.vec2(255, 250),   
+      k.vec2(-20, 230),
     ])
     
   }),
@@ -408,11 +408,61 @@ k.add([
   { z: 1 }
 ]);
 
+k.add([
+  k.sprite("platforms14"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 205),     
+      k.vec2(50, 195),   
+      k.vec2(50, 250),   
+      k.vec2(0, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms14"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(195, 3),     
+      k.vec2(255, 3),   
+      k.vec2(255, 80),   
+      k.vec2(195, 80),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+*/
 
 
-
-
-
+//platforms 15
+/*
+k.add([
+  k.sprite("platforms15"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(195, 3),     
+      k.vec2(255, 3),   
+      k.vec2(255, 80),   
+      k.vec2(195, 80),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+*/
 
 k.add([
   k.sprite("platforms3"),
