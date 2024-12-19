@@ -10,7 +10,7 @@ export function makeplayer(){
         k.scale(4),
         k.area(),
         k.anchor("center"),
-        k.pos(500,k.height() -1005),
+        k.pos(500,k.height()),
         k.body(),
         { speed: SPEED, maxSpeed: MAX_SPEED, z: 10 },
         "player"
