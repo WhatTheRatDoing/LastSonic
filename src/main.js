@@ -8,6 +8,15 @@ k.loadSprite("chemical-bg", "graphics/chemical-bg.png");
 k.loadSprite("platforms", "graphics/platformstwo.PNG");
 k.loadSprite("platforms3", "graphics/60.png");
 k.loadSprite("platforms2", "graphics/59.png");
+k.loadSprite("platforms11", "graphics/33.png");
+k.loadSprite("platforms12", "graphics/36.png");
+k.loadSprite("platforms13", "graphics/37.png");
+k.loadSprite("platforms14", "graphics/38.png");
+k.loadSprite("platforms15", "graphics/39.png");
+k.loadSprite("platforms16", "graphics/41.png");
+k.loadSprite("platforms17", "graphics/42.png");
+
+
 
 k.loadSprite("platforms4", "graphics/bg-61.png")
 k.loadSprite("platforms5", "graphics/bg-62.png")
