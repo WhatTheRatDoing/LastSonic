@@ -891,8 +891,108 @@ k.add([
   { z: 1 }
 ]);
 
+k.add([
+  k.sprite("platforms3"),
+  k.pos(18500, k.height() - 1875),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms16"),
+  k.pos(20000,k.height() - 1115),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 250),     
+      k.vec2(0, 75),   
+      k.vec2(120, 100),   
+      k.vec2(120, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms16"),
+  k.pos(20000,k.height() - 1115),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(120, 100),     
+      k.vec2(120, 250),   
+      k.vec2(255, 250),   
+      k.vec2(255, 140),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
 
 
+k.add([
+  k.sprite("platforms13"),
+  k.pos(21500,k.height() - 1090),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 135),     
+      k.vec2(75, 135),   
+      k.vec2(250, 230),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms13"),
+  k.pos(21500,k.height() - 1090),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(210, 210),     
+      k.vec2(250, 210),   
+      k.vec2(250, 260),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms13"),
+  k.pos(21500,k.height() - 1090),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 0),     
+      k.vec2(60, 0),   
+      k.vec2(60, 100),   
+      k.vec2(0, 100),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
 
 
 

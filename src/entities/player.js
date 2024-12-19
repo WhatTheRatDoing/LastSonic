@@ -8,7 +8,7 @@ export function makeplayer(){
     const player =k.add([
         k.sprite("sonic"),
         k.scale(4),
-        k.area(),
+        k.area({scale: 0.7}),
         k.anchor("center"),
         k.pos(500,k.height()),
         k.body(),
