@@ -294,6 +294,124 @@ k.onCollide("SPEEDPlatform", "player", (_, player) => {
   }
 });
 
+/*
+k.add([
+  k.sprite("platforms11"),
+  k.pos(500,k.height() - 2000),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(200, 200),     
+      k.vec2(250, 200),   
+      k.vec2(250, 250),   
+      k.vec2(200, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms12"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 148),     
+      k.vec2(60, 148),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+*/
+
+//platform13
+/*
+k.add([
+  k.sprite("platforms13"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 146),     
+      k.vec2(75, 146),   
+      k.vec2(250, 230),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms13"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(210, 210),     
+      k.vec2(250, 210),   
+      k.vec2(250, 260),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms13"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 0),     
+      k.vec2(60, 0),   
+      k.vec2(60, 100),   
+      k.vec2(0, 100),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+*/
+
+
+
+
+
+
+
+
+k.add([
+  k.sprite("platforms14"),
+  k.pos(500,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 148),     
+      k.vec2(60, 148),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+
+
+
+
 
 
 k.add([
