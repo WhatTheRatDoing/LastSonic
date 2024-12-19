@@ -58,7 +58,7 @@ player.onGround(() => {
           && !k.isKeyDown("left") 
         && !k.isKeyDown("right") 
         && !k.isKeyPressed("space")) {
-            player.play("idle");
+            player.play("idle2");
         }
     });
   });
