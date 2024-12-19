@@ -600,9 +600,9 @@ k.add([
   k.pos(500, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(38, 130),      // Coin supérieur gauche de l'herbe
-      k.vec2(218, 130),    // Coin supérieur droit de l'herbe
-      k.vec2(218, 100),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(38, 130),     
+      k.vec2(218, 130),    
+      k.vec2(218, 100),     
       k.vec2(38, 100),
     ])
     
@@ -619,9 +619,9 @@ k.add([
   k.pos(500, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(130, 100),      // Coin supérieur gauche de l'herbe
-      k.vec2(200, 100),    // Coin supérieur droit de l'herbe
-      k.vec2(200, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(130, 100),      
+      k.vec2(200, 100),    
+      k.vec2(200, 255),      
       k.vec2(130, 255),
     ])
     
@@ -636,9 +636,9 @@ k.add([
   k.pos(500, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(5, 130),      // Coin supérieur gauche de l'herbe
-      k.vec2(125, 130),    // Coin supérieur droit de l'herbe
-      k.vec2(125, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(5, 130),      
+      k.vec2(125, 130),    
+      k.vec2(125, 255),      
       k.vec2(5, 255),
     ])
     
@@ -653,9 +653,9 @@ k.add([
   k.pos(500, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(195, 70),      // Coin supérieur gauche de l'herbe
-      k.vec2(255, 70),    // Coin supérieur droit de l'herbe
-      k.vec2(255, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(195, 70),      
+      k.vec2(255, 70),    
+      k.vec2(255, 255),      
       k.vec2(195, 255),
     ])
     
@@ -673,9 +673,9 @@ k.add([
   k.pos(500, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(68, 20),      // Coin supérieur gauche de l'herbe
-      k.vec2(255, 20),    // Coin supérieur droit de l'herbe
-      k.vec2(255, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(68, 20),      
+      k.vec2(255, 20),    
+      k.vec2(255, 255),      
       k.vec2(68, 255),
     ])
     
@@ -690,9 +690,9 @@ k.add([
   k.pos(500, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(4, 70),      // Coin supérieur gauche de l'herbe
-      k.vec2(63, 70),    // Coin supérieur droit de l'herbe
-      k.vec2(63, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(4, 70),      
+      k.vec2(63, 70),    
+      k.vec2(63, 255),      
       k.vec2(4, 255),
     ])
     
@@ -807,6 +807,89 @@ k.add([
   { z: 1 }
 ]);
 
+k.add([
+  k.sprite("platforms3"),
+  k.pos(14000, k.height() - 1100),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(15500, k.height() - 1100),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms19"),
+  k.pos(17000, k.height() - 1100),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(130, 100),      
+      k.vec2(200, 100),    
+      k.vec2(200, 255),     
+      k.vec2(130, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms19"),
+  k.pos(17000, k.height() - 1100),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 130),     
+      k.vec2(125, 130),   
+      k.vec2(125, 255),      
+      k.vec2(5, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms19"),
+  k.pos(17000, k.height() - 1100),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(195, 70),      
+      k.vec2(255, 70),    
+      k.vec2(255, 255),     
+      k.vec2(195, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
 
 
 
