@@ -94,12 +94,6 @@ const bgPiecesData = [
   { sprite: "platforms8", posX: bgPieceWidth * 3.330}, 
   { sprite: "platforms9", posX: bgPieceWidth * 3.663}, 
   { sprite: "platforms10", posX: bgPieceWidth * 3.996},
-  { sprite: "platforms18", posX: bgPieceWidth * 4.328},
-  { sprite: "platforms19", posX: bgPieceWidth * 4.659},
-  { sprite: "platforms20", posX: bgPieceWidth * 4.996}, 
-  { sprite: "platforms21", posX: bgPieceWidth * 5.329},
-
-
 ];
 
 
