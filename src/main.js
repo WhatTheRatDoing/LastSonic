@@ -509,6 +509,65 @@ k.add([
 */
 
 
+//platforms16
+/*
+k.add([
+  k.sprite("platforms16"),
+  k.pos(600,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 250),     
+      k.vec2(0, 75),   
+      k.vec2(120, 100),   
+      k.vec2(120, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms16"),
+  k.pos(600,k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(120, 100),     
+      k.vec2(120, 250),   
+      k.vec2(255, 250),   
+      k.vec2(255, 140),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+*/
+
+
+//platforms 18 
+/*
+k.add([
+  k.sprite("platforms18"),
+  k.pos(500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(38, 130),      // Coin supérieur gauche de l'herbe
+      k.vec2(218, 130),    // Coin supérieur droit de l'herbe
+      k.vec2(218, 100),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(38, 100),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);*/
+
+
+
 k.add([
   k.sprite("platforms3"),
   k.pos(9500, k.height() - 1500),
@@ -542,23 +601,14 @@ k.add([
   { z: 1 }
 ]);
 
-/*
-k.add([
-  k.sprite("platforms18"),
-  k.pos(500, k.height() - 1500),
-  k.area({ 
-    shape: new k.Polygon([
-      k.vec2(38, 130),      // Coin supérieur gauche de l'herbe
-      k.vec2(218, 130),    // Coin supérieur droit de l'herbe
-      k.vec2(218, 100),      // Coin inférieur droit, ajusté à la base de l'herbe
-      k.vec2(38, 100),
-    ])
-    
-  }),
-  k.scale(6),
-  k.body({ isStatic: true }),
-  { z: 1 }
-]);
+
+
+
+
+
+
+
+
 
 // Ajout d'un timer
 let elapsedTime = 0; // Temps écoulé en secondes
