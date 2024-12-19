@@ -612,6 +612,8 @@ k.add([
   { z: 1 }
 ]);*/
 
+// platform 19
+
 /*k.add([
   k.sprite("platforms19"),
   k.pos(500, k.height() - 1500),
@@ -655,6 +657,43 @@ k.add([
       k.vec2(255, 70),    // Coin supérieur droit de l'herbe
       k.vec2(255, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
       k.vec2(195, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);*/
+
+
+// platform 20
+
+/*k.add([
+  k.sprite("platforms20"),
+  k.pos(500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(68, 20),      // Coin supérieur gauche de l'herbe
+      k.vec2(255, 20),    // Coin supérieur droit de l'herbe
+      k.vec2(255, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(68, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms20"),
+  k.pos(500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(4, 70),      // Coin supérieur gauche de l'herbe
+      k.vec2(63, 70),    // Coin supérieur droit de l'herbe
+      k.vec2(63, 255),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(4, 255),
     ])
     
   }),
