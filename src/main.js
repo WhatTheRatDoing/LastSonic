@@ -18,18 +18,25 @@ k.loadSprite("platforms9", "graphics/bg-66.png")
 k.loadSprite("platforms10", "graphics/bg-67.png")
 
 k.loadSprite("sonic","graphics/sonic.png", {
-    sliceX: 8,
-    sliceY: 2,
-    anims: {
-        run: {
-            from: 0, to: 7, loop: true, speed: 40
-        },
-        jump: {
-            from: 8, to: 15, loop: true, speed: 120
-        },
-    },
-});
+  sliceX: 16,
+  sliceY: 6,
+  anims: {
 
+    idle: {
+      from: 0, to:4 , loop: false, speed: 10
+    },
+
+    idle2: {
+      from: 5, to:11 , loop: true, speed: 10
+    },
+      run: {
+          from: 18, to: 25, loop: true, speed: 10
+      },
+      jump: {
+          from: 58, to: 73, loop: true, speed: 120
+      },
+  },
+});
 
 
 

@@ -16,7 +16,9 @@ export function makeplayer(){
         "player"
       ]);
 
-
+      player.onGround(() => {
+        player.play("idle");
+      });
 player.onGround(() => {
     if (!k.isKeyDown("left") && !k.isKeyDown("right")) {
         player.play("run");
