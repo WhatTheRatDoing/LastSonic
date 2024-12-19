@@ -36,11 +36,22 @@ k.loadSprite("sonic","graphics/sonic.png", {
     },
 
     idle2: {
-      from: 5, to:11 , loop: true, speed: 10
+      from: 5, to:10 , loop: true, speed: 10
     },
       run: {
           from: 32, to: 39, loop: true, speed: 10
       },
+
+      crouch: {
+        from: 16, to: 20, loop: false, speed: 10
+    },
+
+      crouchspeed: {
+        from: 48, to: 63, loop: true, speed: 10
+    },
+    crouchrun: {
+      from: 64, to: 79, loop: true, speed: 10
+  },
       jump: {
           from: 80, to: 95, loop: true, speed: 120
       },
