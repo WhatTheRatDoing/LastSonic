@@ -96,9 +96,9 @@ player.onPhysicsResolve(() => {
 });
 
 
-    k.onFixedUpdate(() => {
-      console.log(`Vitesse actuelle : ${player.speed}`);
-  });
+  //   k.onFixedUpdate(() => {
+  //     console.log(`Vitesse actuelle : ${player.speed}`);
+  // });
 
   player.isPropelled = false;
   k.onUpdate(() => {
