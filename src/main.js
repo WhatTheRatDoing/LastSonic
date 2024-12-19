@@ -30,10 +30,10 @@ k.loadSprite("sonic","graphics/sonic.png", {
       from: 5, to:11 , loop: true, speed: 10
     },
       run: {
-          from: 18, to: 25, loop: true, speed: 10
+          from: 32, to: 39, loop: true, speed: 10
       },
       jump: {
-          from: 58, to: 73, loop: true, speed: 120
+          from: 80, to: 95, loop: true, speed: 120
       },
   },
 });

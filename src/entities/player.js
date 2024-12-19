@@ -16,12 +16,9 @@ export function makeplayer(){
         "player"
       ]);
 
-      player.onGround(() => {
-        player.play("idle");
-      });
 player.onGround(() => {
     if (!k.isKeyDown("left") && !k.isKeyDown("right")) {
-        player.play("run");
+        player.play("idle2");
     }
     else {
         player.play("jump");
@@ -40,17 +37,18 @@ player.onGround(() => {
     player.move(-player.speed, 0);
     player.flipX = true;
   
-    if (player.isGrounded() && player.curAnim() !== "jump") {
-      player.play("jump");
+    if (player.isGrounded() && player.curAnim() !== "run") {
+      player.play("run");
   }
+
   });
   
   player.onKeyDown("right", ()=>{
     player.move(player.speed, 0);
     player.flipX = false;
   
-    if (player.isGrounded() && player.curAnim() !== "jump") {
-      player.play("jump");
+    if (player.isGrounded() && player.curAnim() !== "run") {
+      player.play("run");
   }
   });
   
@@ -60,9 +58,27 @@ player.onGround(() => {
           && !k.isKeyDown("left") 
         && !k.isKeyDown("right") 
         && !k.isKeyPressed("space")) {
-            player.play("run");
+            player.play("idle");
         }
     });
+  });
+
+  const getInfo = () =>
+    `
+  Anim: ${player.curAnim()}
+  Frame: ${player.frame}
+  `.trim();
+  
+  // Add some text to show the current animation
+  const label = k.add([
+    k.text(getInfo(), { size: 100 }),
+    k.color(0, 0, 0),
+    k.pos(500,k.height()),
+    {z:10},
+  ]);
+  
+  label.onUpdate(() => {
+    label.text = getInfo();
   });
 
 
@@ -86,5 +102,4 @@ player.onPhysicsResolve(() => {
 
 
   return player
-
 };
