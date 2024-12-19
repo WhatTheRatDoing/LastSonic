@@ -1,7 +1,8 @@
 import k from "../kaplayCtx";
 
-const SPEED = 5000;
+const SPEED = 2000;
 const JUMP_FORCE = 2000;
+const MAX_SPEED = 5000;
 
 export function makeplayer(){
     const player =k.add([
@@ -11,7 +12,8 @@ export function makeplayer(){
         k.anchor("center"),
         k.pos(500,k.height() -1005),
         k.body(),
-        { z: 10 }
+        { speed: SPEED, maxSpeed: MAX_SPEED, z: 10 },
+        "player"
       ]);
 
 
@@ -20,7 +22,7 @@ player.onGround(() => {
         player.play("run");
     }
     else {
-        player.play("run");
+        player.play("jump");
     }
   });
   
@@ -33,20 +35,20 @@ player.onGround(() => {
   });
   
   player.onKeyDown("left", ()=>{
-    player.move(-SPEED, 0);
+    player.move(-player.speed, 0);
     player.flipX = true;
   
-    if (player.isGrounded() && player.curAnim() !== "run") {
-      player.play("run");
+    if (player.isGrounded() && player.curAnim() !== "jump") {
+      player.play("jump");
   }
   });
   
   player.onKeyDown("right", ()=>{
-    player.move(SPEED, 0);
+    player.move(player.speed, 0);
     player.flipX = false;
   
-    if (player.isGrounded() && player.curAnim() !== "run") {
-      player.play("run");
+    if (player.isGrounded() && player.curAnim() !== "jump") {
+      player.play("jump");
   }
   });
   
@@ -64,6 +66,10 @@ player.onGround(() => {
 
 player.onUpdate(() => {
 
+    if (player.speed > MAX_SPEED) {
+        player.speed = MAX_SPEED;
+    }
+
     k.camPos(player.worldPos());
 });
 
@@ -71,6 +77,10 @@ player.onPhysicsResolve(() => {
     k.camPos(player.worldPos());
 });
 
+
+    k.onFixedUpdate(() => {
+      console.log(`Vitesse actuelle : ${player.speed}`);
+  });
 
 
   return player

@@ -41,6 +41,7 @@ k.loadSound("hyper-ring","sounds/HyperRing.wav");
 k.loadSound("jump","sounds/Jump.wav");
 k.loadSound("ring","sounds/Ring.wav");
 k.loadSound("city","sounds/city.wav");
+k.loadSound("speed","sounds/sonic-spindash.mp3");
 
 makeplayer();
 
@@ -49,7 +50,6 @@ makeplayer();
 
  const bgPieceWidth = 1920;
 
-// Créer une série de plateformes pour couvrir plusieurs cycles
 const bgPiecesData = [
   { sprite: "platforms4", posX: 0 },
   { sprite: "platforms5", posX: bgPieceWidth * 0.333},
@@ -118,7 +118,7 @@ k.add([
   k.area({ 
     shape: new k.Polygon([
       k.vec2(5, 135),     
-      k.vec2(60, 145),   
+      k.vec2(60, 15),   
       k.vec2(60, 250),   
       k.vec2(5, 250),
     ])
@@ -232,9 +232,62 @@ k.add([
   k.body({ isStatic: true }),
   { z: 1 }
 ]);
-k.add([
+
+const slowingPlatform = k.add([
   k.sprite("platforms3"),
   k.pos(8000, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "SPEEDPlatform"
+]);
+
+k.onCollide("SPEEDPlatform", "player", (_, player) => {
+  if (player.speed && !player.isBoosted) {
+      player.isBoosted = true; 
+      const originalSpeed = player.speed;
+
+
+      player.speed = Math.min(player.speed * 2, player.maxSpeed);
+      k.play("speed", { volume: 0.5 });
+
+      k.wait(4, () => {
+          player.speed = originalSpeed;
+          player.isBoosted = false;
+      });
+  }
+});
+
+
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(9500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(11000, k.height() - 1500),
   k.area({ 
     shape: new k.Polygon([
       k.vec2(5, 200),     
