@@ -303,6 +303,36 @@ k.add([
 ]);
 
 
+// Ajout d'un timer
+let elapsedTime = 0; // Temps écoulé en secondes
+const timerText = k.add([
+    k.text("TIME : 0:00", { font: "mania", size: 48 }), // Style du texte
+    k.pos(20, 900), // Position initiale
+    { z: 10 }, // Toujours visible au-dessus des autres éléments
+]);
+
+// Fonction pour formater le temps
+const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+};
+
+// Configure la caméra pour suivre Sonic
+const player = k.get("player")[0]; // Suppose que le joueur est tagué avec "player"
+if (player) {
+    k.camPos(player.pos); // La caméra suit Sonic
+}
+
+// Boucle de mise à jour
+k.onUpdate(() => {
+    // Met à jour le temps écoulé
+    elapsedTime += k.dt(); // Incrémenter le temps avec le deltaTime
+    timerText.text = `TIME : ${formatTime(elapsedTime)}`; // Mettre à jour l'affichage
+
+    // Positionner le timer par rapport à la caméra
+    timerText.pos = k.vec2(k.camPos().x - k.width() / 2 + 20, k.camPos().y - k.height() / 2 + 20); // Ajustez ici pour la position souhaitée
+});
 
 
 
