@@ -15,7 +15,10 @@ k.loadSprite("platforms14", "graphics/38.png");
 k.loadSprite("platforms15", "graphics/39.png");
 k.loadSprite("platforms16", "graphics/41.png");
 k.loadSprite("platforms17", "graphics/42.png");
-
+k.loadSprite("platforms18", "graphics/3.png");
+k.loadSprite("platforms19", "graphics/4.png");
+k.loadSprite("platforms20", "graphics/5.png");
+k.loadSprite("platforms21", "graphics/7.png");
 
 
 k.loadSprite("platforms4", "graphics/bg-61.png")
@@ -90,7 +93,13 @@ const bgPiecesData = [
   { sprite: "platforms7", posX: bgPieceWidth * 2.997}, 
   { sprite: "platforms8", posX: bgPieceWidth * 3.330}, 
   { sprite: "platforms9", posX: bgPieceWidth * 3.663}, 
-  { sprite: "platforms10", posX: bgPieceWidth * 3.996} 
+  { sprite: "platforms10", posX: bgPieceWidth * 3.996},
+  { sprite: "platforms18", posX: bgPieceWidth * 4.328},
+  { sprite: "platforms19", posX: bgPieceWidth * 4.659},
+  { sprite: "platforms20", posX: bgPieceWidth * 4.996}, 
+  { sprite: "platforms21", posX: bgPieceWidth * 5.329},
+
+
 ];
 
 
@@ -533,6 +542,23 @@ k.add([
   { z: 1 }
 ]);
 
+/*
+k.add([
+  k.sprite("platforms18"),
+  k.pos(500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(38, 130),      // Coin supérieur gauche de l'herbe
+      k.vec2(218, 130),    // Coin supérieur droit de l'herbe
+      k.vec2(218, 100),      // Coin inférieur droit, ajusté à la base de l'herbe
+      k.vec2(38, 100),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
 
 // Ajout d'un timer
 let elapsedTime = 0; // Temps écoulé en secondes
