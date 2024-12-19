@@ -1,6 +1,6 @@
 import k from "../kaplayCtx";
 
-const SPEED = 2000;
+const SPEED = 5000;
 const JUMP_FORCE = 2000;
 const MAX_SPEED = 5000;
 

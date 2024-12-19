@@ -3,7 +3,98 @@ import k from "./kaplayCtx";
 import mainMenu from "./scenes/mainMenu";
 
 
+k.scene("introDialog", () => {
+  
+  k.loadSprite("sonic", "graphics/sonictalking.gif");
+  k.loadSprite("tails", "graphics/tails.png");
+  k.loadSound("sonic_voice", "sounds/maw.mp3");
+  // k.loadSound("tails_voice", "examples/sounds/tails_voice.wav");
+  k.loadFont("mania","fonts/mania.ttf");
 
+  const characters = {
+    "sonic": {
+        "sprite": "sonic",
+        "name": "Sonic",
+        "sound": "sonic_voice", 
+    },
+    "tails": {
+        "sprite": "tails",
+        "name": "Tails",
+    },
+};
+
+
+const dialogs = [
+  ["sonic", "[default]Oh salut[/default]"],
+  ["tails", "[default]Hey! c'est Sonic[/default]"],
+  ["sonic", "[default]Comment tu vas ?[/default]"],
+  ["tails", "[default]Pas bien du tout Robotenik a volé notre ciel[/default]"],
+  ["sonic", "[default]ho la vache je l'avais pas vu[/default]"],
+  ["tails", "[default]oui il faut l'arreter !![/default]"],
+  ["sonic", "[default]ok tu viens avec moi tails ?[/default]"],
+  ["tails", "[default]nope[/default]"],
+  ["sonic", "[default]Enculé[/default]"],
+];
+
+  let curDialog = 0;
+  let isTalking = false;
+
+  const dialogBox = k.add([
+    k.rect(400, 100),
+    k.pos(k.width() / 2 - 200, k.height() - 1200),
+    { origin: "center" }, 
+    k.color(0, 0, 0),
+    k.layer("ui"),
+]);
+
+const dialogText = k.add([
+    k.text("", { size: 50, font: "mania" }),
+    k.pos(k.width() / 2 - 190, k.height() - 500),
+    { origin: "left" }, 
+    k.layer("ui"),
+]);
+
+const spriteDisplay = k.add([
+    k.sprite("sonic"),
+    k.pos(k.width() / 2 - 300, k.height() - 1250),
+    { origin: "center" }, 
+    k.layer("ui"),
+]);
+
+function showDialog() {
+  isTalking = true;
+
+  const [character, text] = dialogs[curDialog];
+
+  spriteDisplay.use(k.sprite(characters[character].sprite));
+  dialogText.text = `${characters[character].name}: ${text}`;
+
+  if (characters[character].sound) {
+      k.play(characters[character].sound);
+  }
+
+  k.wait(0.5, () => {
+      isTalking = false;
+  });
+}
+
+ showDialog();
+
+  k.onKeyPress("space", () => {
+    if (isTalking) return;
+
+    curDialog++;
+    if (curDialog >= dialogs.length) {
+        k.go("mainGame");
+    } else {
+        showDialog();
+    }
+});
+});
+
+k.scene("mainGame", () => {
+
+  
 k.loadSprite("chemical-bg", "graphics/chemical-bg.png");
 k.loadSprite("platforms", "graphics/platformstwo.PNG");
 k.loadSprite("platforms3", "graphics/60.png");
@@ -1037,10 +1128,10 @@ k.add([
   k.pos(21500,k.height() - 1090),
   k.area({ 
     shape: new k.Polygon([
-      k.vec2(0, 0),     
+      k.vec2(5, 0),     
       k.vec2(60, 0),   
       k.vec2(60, 100),   
-      k.vec2(0, 100),
+      k.vec2(5, 100),
     ])
     
   }),
@@ -1049,6 +1140,23 @@ k.add([
   { z: 1 }
 ]);
 
+
+k.add([
+  k.sprite("platforms12"),
+  k.pos(21495,k.height() - 2300),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 148),     
+      k.vec2(60, 148),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
 
 
 
@@ -1111,6 +1219,9 @@ k.scene("gameover", ({ time, score }) => {
     ]);
 });
 */
+});
+
+k.go("introDialog");
 
 
 
