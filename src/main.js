@@ -1,15 +1,23 @@
 import { makeplayer } from "./entities/player";
 import k from "./kaplayCtx";
 import mainMenu from "./scenes/mainMenu";
+import { makeMotobug } from "./entities/motobug";
+import { makefish } from "./entities/fish";
+import { makeplatformsaut } from "./entities/platformdesaut";
+import { makeSonicexe } from "./entities/sonicexe";
+import { makeSonicexe2 } from "./entities/sonicexe2";
+
+let isReloading = false;
+
 
 // dialogues mis en plus, si vous souhaitez les activer, de commentez "introdialog" et commentez "k.go("mainGame");" en fin de code
 
-/*
+
 k.scene("introDialog", () => {
   
   k.loadSprite("sonic", "graphics/sonictalking.gif");
   k.loadSprite("tails", "graphics/tails.png");
-  k.loadSound("sonic_voice", "sounds/maw.mp3");
+  k.loadSound("sonic_voice", "sounds/talking.mp3", );
   // k.loadSound("tails_voice", "examples/sounds/tails_voice.wav");
   k.loadFont("mania","fonts/mania.ttf");
 
@@ -31,24 +39,21 @@ const dialogs =
   ["sonic", "[default]Oh salut[/default]"],
   ["tails", "[default]Hey! c'est Sonic[/default]"],
   ["sonic", "[default]Comment tu vas ?[/default]"],
-  ["tails", "[default]Pas bien du tout Robotenik a volé notre ciel[/default]"],
+  ["tails", "[default]Pas bien du tout Robotnik a volé notre ciel[/default]"],
   ["sonic", "[default]ho la vache je l'avais pas vu[/default]"],
   ["tails", "[default]oui il faut l'arreter !![/default]"],
   ["sonic", "[default]ok tu viens avec moi tails ?[/default]"],
   ["tails", "[default]nope[/default]"],
-  ["sonic", "[default]Enculé[/default]"],
+  ["sonic", "[default]Pas sympa ...[/default]"],
+  ["tails", "[default]Au cas ou sonic, certaines platformes sont traversable[/default]"],
+  ["sonic", "[default]...[/default]"],
+  ["tails", "[default]et déplace toi avec les touche directives de l'ordinateur[/default]"],
+  ["sonic", "[default]heuuu ok ... merci je devine[/default]"],
+  ["tails", "[default]de rien, allez maintenant va attraper Robotnik ''qui a volé le ciel''[/default]"],
 ];
 
   let curDialog = 0;
   let isTalking = false;
-
-  const dialogBox = k.add([
-    k.rect(400, 100),
-    k.pos(k.width() / 2 - 200, k.height() - 1200),
-    { origin: "center" }, 
-    k.color(0, 0, 0),
-    k.layer("ui"),
-]);
 
 const dialogText = k.add([
     k.text("", { size: 50, font: "mania" }),
@@ -68,7 +73,6 @@ function showDialog() {
   isTalking = true;
 
   const [character, text] = dialogs[curDialog];
-
   spriteDisplay.use(k.sprite(characters[character].sprite));
   dialogText.text = `${characters[character].name}: ${text}`;
 
@@ -76,7 +80,7 @@ function showDialog() {
       k.play(characters[character].sound);
   }
 
-  k.wait(3, () => {
+  k.wait(2, () => {
       isTalking = false;
   });
 }
@@ -97,10 +101,10 @@ function showDialog() {
 
 k.go("introDialog");
 
-*/
 
 
 k.scene("mainGame", () => {
+  let isReloading = false;
 
   
 k.loadSprite("chemical-bg", "graphics/chemical-bg.png");
@@ -161,19 +165,83 @@ k.loadSprite("sonic","graphics/sonic.png", {
   },
 });
 
+k.loadSprite("ring","graphics/ring.png", {
+  sliceX: 16,
+  SliceY: 1,
+  anims: {
+      spin: {
+          from: 0, to: 15, loop: true, speed: 30
+      },
+  },
+});
+k.loadSprite("motobug","graphics/motobug.png", {
+  sliceX: 5,
+  SliceY: 1,
+  anims: {
+      run: {
+          from: 0, to: 4, loop: true, speed: 8
+      },
+  },
+});
+k.loadSprite("fish","graphics/fish.png", {
+  sliceX: 1,
+  anims: {
+      fishing: {
+          from: 0, to: 0, loop: true, speed: 8
+      },
+  },
+});
+k.loadSprite("platformsaut","graphics/S2RSC.png", {
+  sliceX: 1,
+  anims: {
+      sauter: {
+          from: 0, to: 0, loop: true, speed: 8
+      },
+  },
+});
+
+k.loadSprite("sonicexe","graphics/sonicexe.png", {
+  sliceX: 1,
+  anims: {
+      idles: {
+          from: 0, to: 0, loop: true, speed: 10
+      },
+  },
+});
+
+k.loadSprite("sonicexechase","graphics/flyingexe.png", {
+  sliceX: 1,
+  anims: {
+    chase: {
+          from: 0, to: 0, loop: true, speed: 10
+      },
+  },
+});
+
+
+
 
 
 k.loadFont("mania","fonts/mania.ttf");
 
-k.loadSound("destroy","sounds/Destroy.wav");
-k.loadSound("hurt","sounds/Hurt.wav");
-k.loadSound("hyper-ring","sounds/HyperRing.wav");
-k.loadSound("jump","sounds/Jump.wav");
-k.loadSound("ring","sounds/Ring.wav");
-k.loadSound("city","sounds/city.wav");
+k.loadSound("destroy","sounds/deathtosmt.mp3");
+k.loadSound("hurt","sounds/death.mp3");
+k.loadSound("hyper-ring","sounds/deathtosmt.mp3");
+k.loadSound("jump","sounds/jump.mp3");
+k.loadSound("ring","sounds/sonic-spindash.mp3");
+k.loadSound("city","sounds/sonic-spindash.mp3");
 k.loadSound("speed","sounds/sonic-spindash.mp3");
 k.loadSound("exe","sounds/sonic-exe-laugh.mp3");
-makeplayer();
+k.loadSound("crunch","sounds/crunch.mp3");
+k.loadSound("AHHHH","sounds/AHHHH.mp3");
+k.loadSound("bounce","sounds/bounce.mp3");
+k.loadSound("musicsad","sounds/sadmusic.mp3");
+k.loadSound("cours","sounds/cours.mp3");
+k.loadSound("runfast","sounds/run-sonic-exe.mp3");
+k.loadSound("horror","sounds/horror-jump.mp3");
+k.loadSound("RUN","sounds/rrrrruuuuun.mp3");
+k.loadSound("scream","sounds/sonicscream.mp3");
+let player = makeplayer();
 
   k.setGravity(2500)
 
@@ -206,10 +274,10 @@ function createBgPieces() {
           k.area()
       ]),
       k.add([
-        k.rect(k.width()*10, k.height()+900), // Rectangle couvrant tout l'écran
-        k.pos(0, 0),                   // Positionné au coin supérieur gauche
-        k.color(120, 200, 255),        // Couleur bleu ciel (valeurs ajustables)
-        { z: -1 }                      // S'assurer que ce fond est derrière tout
+        k.rect(k.width()*10, k.height()+900),
+        k.pos(0, 0),                  
+        k.color(120, 200, 255),        
+        { z: -1 }                    
       ])
   );
 
@@ -708,9 +776,27 @@ k.add([
   }),
   k.scale(6),
   k.body({ isStatic: true }),
+  "passthroughPlatform",
   { z: 1 }
-]);*/
+]);
 
+k.add([
+  k.sprite("platforms18"),
+  k.pos(500, k.height() - 1500),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 200),     
+      k.vec2(255, 200),    
+      k.vec2(255, 255),     
+      k.vec2(0, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+*/
 // platform 19
 
 /*k.add([
@@ -1554,7 +1640,7 @@ k.onCollide("laugh", "player", (_, player) => {
 
 
       player.speed = Math.min(player.speed * 0.5, player.maxSpeed);
-      k.play("exe", { volume: 0.5 });
+      k.play("exe", { volume: 0.8 });
 
       k.wait(4, () => {
           player.speed = originalSpeed;
@@ -1669,6 +1755,612 @@ k.add([
   "laugh"
 ]);
 
+k.add([
+  k.sprite("platforms3"),
+  k.pos(50500, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(52000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(53500, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 },
+  "laugh"
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(55000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+k.add([
+  k.sprite("platforms3"),
+  k.pos(56500, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(58000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(59500, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+
+k.add([
+  k.sprite("platforms18"),
+  k.pos(61000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(38, 130),     
+      k.vec2(218, 130),    
+      k.vec2(218, 100),     
+      k.vec2(38, 100),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  "passthroughPlatform",
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms18"),
+  k.pos(61000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 200),     
+      k.vec2(255, 200),    
+      k.vec2(255, 255),     
+      k.vec2(0, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms3"),
+  k.pos(62500, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(5, 200),     
+      k.vec2(250, 200),   
+      k.vec2(60, 250),   
+      k.vec2(5, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms18"),
+  k.pos(63000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(38, 130),     
+      k.vec2(218, 130),    
+      k.vec2(218, 100),     
+      k.vec2(38, 100),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms18"),
+  k.pos(63000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(0, 200),     
+      k.vec2(255, 200),    
+      k.vec2(255, 255),     
+      k.vec2(0, 255),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.add([
+  k.sprite("platforms18"),
+  k.pos(63000, k.height() - 2550),
+  k.area({ 
+    shape: new k.Polygon([
+      k.vec2(240, -100),     
+      k.vec2(300, 0),   
+      k.vec2(300, 250),
+      k.vec2(240, 250),
+    ])
+    
+  }),
+  k.scale(6),
+  k.body({ isStatic: true }),
+  { z: 1 }
+]);
+
+k.onCollide("passthroughPlatform", "player", (_, player) => {
+  if (player.speed && !player.isBoosted) {
+      player.isBoosted = true;
+      const originalSpeed = player.speed;
+
+      player.speed = Math.min(player.speed * 0.5, player.maxSpeed);
+      k.play("musicsad", { volume: 0.5 });
+
+      spawnExe();
+
+      k.wait(4, () => {
+          player.speed = originalSpeed;
+          player.isBoosted = false;
+      });
+  }
+});
+
+
+
+
+
+
+
+// logique motobug
+k.onCollide("enemy", "player", (enemy, player) => {
+  if (!player.isGrounded()) {
+    k.play("destroy", {volume: 0.5});
+    k.play("hyper-ring", {volume: 0.5});
+    k.destroy(enemy);
+    player.jump(player.jumpforce);
+    player.play("jump");
+  } else {
+    k.play("hurt", {volume: 0.5});
+    
+    if (!isReloading) {
+      isReloading = true;
+      setTimeout(() => {
+        k.go("mainGame");
+      }, 500); 
+    }
+  }
+});
+
+
+
+let motobugs = [];  
+let positionOccupee = [];  
+
+const spawnMotoBug = () => {
+
+  const positions = [
+    k.vec2(1950, 1080),
+    k.vec2(2950, 1080),
+    k.vec2(3950, 1080),
+    k.vec2(4950, 1080),
+    k.vec2(5950, 1080),
+   
+    k.vec2(8950, 680),
+    k.vec2(9950, 680),
+    k.vec2(10450, 680),
+    k.vec2(12450, 680),
+    k.vec2(15450, 1080),
+
+    k.vec2(20050, 250),
+    k.vec2(25450, 680),
+    k.vec2(28450, 670),
+  ];
+
+
+  const availablePositions = positions.filter(position => 
+    !positionOccupee.some(posoccupee => 
+      posoccupee.x === position.x && posoccupee.y === position.y
+    )
+  );
+
+  if (availablePositions.length === 0) return;  
+
+
+  const position = availablePositions[k.randi(0, availablePositions.length - 1)];
+
+  const motobug = makeMotobug(position);
+  motobugs.push(motobug);  
+  positionOccupee.push(position);  
+  
+  motobug.animate("pos", [k.vec2(position.x, position.y + 500), k.vec2(position.x - 200, position.y + 500)], {
+    duration: 2, 
+    direction: "ping-pong", 
+  });
+
+  motobug.onExitScreen(() => {
+    if (motobug.pos.x < 0) {
+      k.destroy(motobug);
+      motobugs = motobugs.filter(m => m !== motobug);  
+      positionOccupee = positionOccupee.filter(pos => 
+        pos.x !== position.x || pos.y !== position.y
+      );  
+    }
+  });
+
+  const waitTime = k.rand(0.1, 0.2);
+  k.wait(waitTime, spawnMotoBug); 
+};
+
+spawnMotoBug();
+
+
+//fish logique
+
+k.onCollide("enemyfish", "player", (_, player) => {
+  k.play("crunch", { volume: 0.5 });
+  if (!isReloading) {
+    isReloading = true;
+    setTimeout(() => {
+      k.go("mainGame");
+    }, 500); 
+  }
+});
+
+
+
+let fishs = [];  
+let poissonOccupee = [];  
+
+const spawnPoisson = () => {
+
+  const positions = [
+    k.vec2(6300, 1580),
+    k.vec2(23200, 1580),
+    k.vec2(23800, 1580),
+    k.vec2(39000, 2500),
+    k.vec2(6300, 1580),
+  
+  ];
+
+
+  const availablePositions = positions.filter(position => 
+    !poissonOccupee.some(poisoccupee => 
+      poisoccupee.x === position.x && poisoccupee.y === position.y
+    )
+  );
+
+  if (availablePositions.length === 0) return;  
+
+
+  const position = availablePositions[k.randi(0, availablePositions.length - 1)];
+
+  const fish = makefish(position);
+  fishs.push(fish);  
+  poissonOccupee.push(position);  
+  
+  fish.animate("pos", [k.vec2(position.x , position.y - 1500), k.vec2(position.x , position.y + 2000)], {
+    duration: 1.5, 
+    direction: "ping-pong", 
+  });
+
+  fish.onExitScreen(() => {
+    if (fish.pos.x < 0) {
+      k.destroy(fish);
+      fishs = fishs.filter(m => m !== fish);  
+      poissonOccupee = poissonOccupee.filter(pos => 
+        pos.x !== position.x || pos.y !== position.y
+      );  
+    }
+  });
+
+  const waitTime = k.rand(0.1, 0.2);
+  k.wait(waitTime, spawnPoisson); 
+};
+
+spawnPoisson();
+
+
+
+//platformsaut logique
+
+let platformssaut = [];  
+let platformOccupee = [];  
+
+const spawnPlatformsaut = () => {
+
+  const positions = [
+    k.vec2(39000, 2650),
+  
+  ];
+
+
+  const availablePositions = positions.filter(position => 
+    !platformOccupee.some(platformoccupee => 
+      platformoccupee.x === position.x && platformoccupee.y === position.y
+    )
+  );
+
+  if (availablePositions.length === 0) return;  
+
+
+  const position = availablePositions[k.randi(0, availablePositions.length - 1)];
+
+  const platformdesaut = makeplatformsaut(position);
+  platformssaut.push(platformdesaut);  
+  platformOccupee.push(position);  
+  
+  platformdesaut.animate("pos", [k.vec2(position.x , position.y ), k.vec2(position.x , position.y )], {
+    duration: 1.5, 
+    direction: "ping-pong", 
+  });
+
+  platformdesaut.onExitScreen(() => {
+    if (platformdesaut.pos.x < 0) {
+      k.destroy(platformdesaut);
+      platformssaut = platformssaut.filter(m => m !== platformdesaut);  
+      platformOccupee = platformOccupee.filter(pos => 
+        pos.x !== position.x || pos.y !== position.y
+      );  
+    }
+  });
+
+  const waitTime = k.rand(0.1, 0.2);
+  k.wait(waitTime, spawnPlatformsaut); 
+};
+
+spawnPlatformsaut();
+
+
+k.onCollide("saut", "player", (_, player) => {
+  if (!player.isGrounded()) {
+    player.jump(player.jumpforce * 2);
+    k.play("bounce",{volume: 0.5})
+  }
+  // k.play("bounce",{volume: 0.5})
+
+  // k.go("gameover");
+});
+
+
+
+let exes = [];  
+let exeOccupe = [];  
+
+
+const spawnExe = () => {
+
+  const positions = [
+    k.vec2(63500, -500),
+  ];
+
+  const availablePositions = positions.filter(position => 
+    !exeOccupe.some(exeoccupe => 
+      exeoccupe.x === position.x && exeoccupe.y === position.y
+    )
+  );
+
+  if (availablePositions.length === 0) return;  
+
+  const position = availablePositions[k.randi(0, availablePositions.length - 1)];
+
+  const exe = makeSonicexe(position);
+  exes.push(exe);  
+  exeOccupe.push(position);  
+
+  exe.animate("idles", [k.vec2(position.x , position.y - 500), k.vec2(position.x , position.y + 500)], {
+    duration: 5, 
+    direction: "ping-pong", 
+  });
+
+  exe.onExitScreen(() => {
+    if (exe.pos.x < 0) {
+      k.destroy(exe);
+      exes = exes.filter(m => m !== exe);  
+      exeOccupe = exeOccupe.filter(pos => 
+        pos.x !== position.x || pos.y !== position.y
+      );  
+    }
+  });
+
+  k.wait(6, () => {
+    k.play("RUN");
+  });
+
+
+  k.wait(10, () => {
+    exe.action = "pursuit"; 
+    playMusicAfterDelay();
+  });
+
+  const waitTime = k.rand(0.1, 0.2);
+  k.wait(waitTime, spawnExe); 
+};
+
+function playMusicAfterDelay() {
+  k.wait(0, () => {
+    k.play("runfast"); 
+  });
+
+
+  k.wait(11, () => {
+    k.play("runfast"); 
+  });
+}
+
+
+
+let speed = 60;
+const maxSpeed = 10000;
+const speedIncrement = 4.5;
+let path = [];
+let currentWaypointIndex = 0;  
+
+k.onUpdate("exe", (enemy) => {
+    switch (enemy.action) {
+        case "observe": {
+            if (lineOfSight(enemy, player)) {
+                enemy.action = "pursuit";
+                currentWaypointIndex = 0; 
+                
+            }
+            break;
+        }
+
+        case "pursuit": {
+          
+            if (lineOfSight(enemy, player)) {
+                enemy.moveTo(player.pos, speed);  
+                currentWaypointIndex = 0; 
+            } else {
+                path = createPath(enemy.pos, player.pos);  
+
+                if (currentWaypointIndex < path.length) {
+                    const nextPoint = path[currentWaypointIndex];
+                    const distanceToWaypoint = enemy.pos.dist(nextPoint);  
+
+                    if (distanceToWaypoint < 20) {  
+                        currentWaypointIndex++;  
+                    } else {
+                        enemy.moveTo(nextPoint, speed);  
+                    }
+                    if (speed < maxSpeed) {
+                      speed += speedIncrement;
+                  }
+                    
+                }
+
+                if (currentWaypointIndex >= path.length) {
+                    if (lineOfSight(enemy, player)) {
+                        enemy.action = "pursuit"; 
+                        currentWaypointIndex = 0; 
+                    } else {
+                        enemy.action = "observe"; 
+                    }
+                }
+            }
+
+            if (enemy.pos.dist(player.pos) < 50) {
+              k.play("scream", { volume: 0.5 });
+              k.go("game over");  
+          }
+            break;
+        }
+    }
+});
+
+function lineOfSight(enemy, target) {
+    const ray = k.raycast(enemy.pos, target.pos);  
+    return ray === null;  
+}
+
+function createPath(startPos, endPos) {
+    const points = [];
+    const stepSize = 50;  
+    let currentX = startPos.x;
+    let currentY = startPos.y;
+    while (Math.abs(currentX - endPos.x) > stepSize || Math.abs(currentY - endPos.y) > stepSize) {
+        currentX += Math.sign(endPos.x - currentX) * stepSize;
+        currentY += Math.sign(endPos.y - currentY) * stepSize;
+        points.push(k.vec2(currentX, currentY));
+    }
+    points.push(endPos);  
+    return points;
+}
+
+
+
+
+
+
+
 
 
 
@@ -1736,13 +2428,98 @@ k.scene("gameover", ({ time, score }) => {
     ]);
 });
 */
+
+
+
+k.scene("game over", () => {
+
+
+  k.add([
+      k.text("Ce n'etait Robotnik qui avait volé le ciel", {
+          size: 48,
+          font: "sink",
+          color: k.rgb(255, 0, 0)
+      }),
+      k.pos(k.width() / 2, k.height() / 2 - 100),
+      k.anchor("center"), 
+      k.layer("ui")
+  ]);
+
+
+  const restartButton = k.add([
+      k.rect(200, 60), 
+      k.pos(k.width() / 2 - 100, k.height() / 2), 
+      k.color(0, 0, 255),
+      k.anchor("center"),
+      k.layer("ui"),
+      k.area() 
+  ]);
+
+
+  k.add([
+      k.text("Restart", { size: 24, font: "sink" }),
+      k.pos(k.width() / 2, k.height() / 2), 
+      k.anchor("center"),
+      k.layer("ui")
+  ]);
+
+  restartButton.onClick(() => {
+      k.go("mainGame"); 
+  });
+
+
+  const quitButton = k.add([
+      k.rect(200, 60), 
+      k.pos(k.width() / 2 - 100, k.height() / 2 + 100),
+      k.color(255, 0, 0),
+      k.anchor("center"),
+      k.layer("ui"),
+      k.area() 
+  ]);
+
+
+  k.add([
+      k.text("Quit", { size: 24, font: "sink" }),
+      k.pos(k.width() / 2, k.height() / 2 + 100), 
+      k.anchor("center"),
+      k.layer("ui")
+  ]);
+
+  quitButton.onClick(() => {
+      k.quit(); 
+  });
 });
 
 
 
 
 
-k.go("mainGame");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+// k.go("mainGame");
 
 
 
